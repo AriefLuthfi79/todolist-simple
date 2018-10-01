@@ -1,3 +1,5 @@
+require 'pp'
+
 puts "#" * 20
 puts "Todo List command line"
 
@@ -24,7 +26,7 @@ while true do
           f.puts task
         end
       else
-        puts 'File sudah ada'
+        puts 'file sudah ada' 
       end
     when /no/
       puts "tugas mu adalah"
