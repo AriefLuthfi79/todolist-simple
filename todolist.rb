@@ -1,5 +1,3 @@
-require 'pp'
-
 puts "#" * 20
 puts "Todo List command line"
 
