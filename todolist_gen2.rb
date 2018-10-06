@@ -46,7 +46,7 @@ def create_task
   when /yes/
     puts 'Apa nama filename nya?'
     filename = gets.chomp
-    save_to_file(filename, task)
+    save_to_file(fixing_file_name(filename(filename), task)
   when /no/
     puts "tugas anda adalah #{task}"
   end
@@ -76,7 +76,7 @@ def read_task(name_of_file)
   File.open(name_of_file, "r") do |f|
     f.each_line { |line| arr << line }
   end
-  return fixing_name_of_task arr
+  return fixing_names_of_task arr
 end
 
 def delete_task(filename, number)
@@ -94,8 +94,13 @@ def update_task(filename, task)
   end
 end
 
-def fixing_name_of_task(task)
+def fixing_names_of_task(task)
   task.each_with_index { |task, index| puts "#{index + 1}. #{task}" }
+end
+
+def fixing_filename(filename) 
+  accepted_extension = '.txt'
+  filename.include? accepted_extension ? return filename : return "#{filename.concat(accpted_extension)}"
 end
 
 def show_all_files
