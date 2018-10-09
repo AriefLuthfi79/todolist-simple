@@ -21,7 +21,7 @@ def main_loop
       show_all_files
       puts "Pilih nama file nya apa?"
       file = gets.chomp
-      read_task(file)
+      read_task(fixing_filename(file))
     when 3
       puts 'Anda ingin delete task di file mana?'
       show_all_files
@@ -46,7 +46,7 @@ def create_task
   when /yes/
     puts 'Apa nama filename nya?'
     filename = gets.chomp
-    save_to_file(fixing_file_name(filename(filename), task)
+    save_to_file(fixing_file_name(filename), task)
   when /no/
     puts "tugas anda adalah #{task}"
   end
@@ -99,8 +99,7 @@ def fixing_names_of_task(task)
 end
 
 def fixing_filename(filename) 
-  accepted_extension = '.txt'
-  filename.include? accepted_extension ? return filename : return "#{filename.concat(accpted_extension)}"
+  "#{filename.concat(".txt")}" unless filename.include? ".txt"
 end
 
 def show_all_files
