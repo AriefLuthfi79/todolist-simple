@@ -24,6 +24,20 @@ class ListService
       f.each_line { |line| puts line }
     end
   end
+
+  def delete_task(filename, number)
+    File.open(filename, 'r') do |f|
+      f.each_line { |line| list << line.strip }
+    end
+    list.delete_at(number-1)
+    self.update_task(filename)
+  end
+
+  def update_task(filename)
+    File.open(filename, 'w') do |f|
+      list.each { |task| f.puts task }
+    end
+  end
 end
 
 class Task
@@ -38,8 +52,7 @@ class Task
   end
 end
 
-task = Task.new("Belajar deh")
 list = ListService.new
-list.create_task(task)
-list.save_to_file("oke.txt")
 list.read_from_file("oke.txt")
+list.delete_task('oke.txt', 1)
+
